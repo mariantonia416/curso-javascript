@@ -1,13 +1,27 @@
+let edad = prompt ('¿Cuántos años tienes?');
 
-let userName = prompt('Enter your name')
-let userAge = prompt('Enter your age')
+// for (edad; edad < 8; edad++) {
+//     console.log(edad)   
+// }
 
-if (userAge >= 12) {
-    alert(userName + ', you are over twelve years old, start the game now')
-}
-else if (userAge <= '') {
-    alert(userName + ', you have to enter your age to start the game')
-}
-else  {
-    alert(userName + ', you are under twelve years old, you can not start the game')
+while (edad != 'ESC') {
+    if (edad < 12) {
+        alert('El juego no está permitido para menores de 12 años')
+    }
+    else {
+        switch (edad) {
+            case '11':
+            alert ('Podrás jugar cuando cumplas 12 años')
+            break;
+
+            case '12':
+            alert ('Puedes empezar a jugar')
+            break;
+
+            default:
+            alert ('El juego solo está permitido para mayores de 12 años')
+            break;
+        }
+    }
+    edad = prompt ('¿Cuántos años tienes?');
 }

@@ -23,7 +23,7 @@ class servicios {
     }
 }
 
-class clientes {
+class Clientes {
     constructor(nombre, empresa, telefono, email,numeroItems) {
         this.nombre = nombre,
         this.empresa = empresa,
@@ -32,7 +32,7 @@ class clientes {
     }
 }
 
-class valorTotal {
+class ValorTotal {
     constructor (subtotal,iva,total) {
         this.subtotal = subtotal,
         this.iva = iva,

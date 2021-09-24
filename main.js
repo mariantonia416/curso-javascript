@@ -1,4 +1,4 @@
-class servicios {
+class Servicios {
     constructor(item, concepto, cantidad) {
         this.item = item,
             this.concepto = concepto,
@@ -21,6 +21,34 @@ class servicios {
                 break;
         }
     }
+}
+
+let producto=[
+    
+    {
+        'codigoItem': '001',
+        'nombreItem': 'tarima',
+        'precioItem': 1000000,
+        'cantidadItem': 1
+    },
+    {
+        'codigoItem': '002',
+        'nombreItem': 'techo',
+        'precioItem': 1200000,
+        'cantidadItem': 1
+    },{
+        'codigoItem': '003',
+        'nombreItem': 'pantalla',
+        'precioItem': 3000000,
+        'cantidadItem': 1
+    }
+];
+
+function ordenarPorNombre() {
+    producto.sort((a,b)=>{
+        return a.nombreItem.localeCompare(b.nombreItem)
+    });
+    console.table(producto)
 }
 
 class Clientes {
@@ -67,20 +95,20 @@ let datosCotizacion = {
     }
 };
 
-datosCotizacion.cliente.nombreCompleto = prompt('Escribe tu nombre completo');
-datosCotizacion.cliente.empresa = prompt('Empresa donde laboras');
-datosCotizacion.cliente.telefono = prompt('Escribe tu numero de teléfono');
-datosCotizacion.cliente.email = prompt('Escribe tu email');
-let = numeroItems = prompt ('¿Cuántos items quieres cotizar?')
+// datosCotizacion.cliente.nombreCompleto = prompt('Escribe tu nombre completo');
+// datosCotizacion.cliente.empresa = prompt('Empresa donde laboras');
+// datosCotizacion.cliente.telefono = prompt('Escribe tu numero de teléfono');
+// datosCotizacion.cliente.email = prompt('Escribe tu email');
+// let = numeroItems = prompt ('¿Cuántos items quieres cotizar?')
 
-let i;
-for (i = 0; i < numeroItems; i++) {
-    let concepto = prompt('¿Qué quieres cotizar?');
-    let cantidad = prompt('Cantidad requerida');
-    let x = new servicios(i+1, concepto, cantidad)
-    x.calculoValorServicio()
-    datosCotizacion.servicio.push(x)
-}
+// let i;
+// for (i = 0; i < numeroItems; i++) {
+//     let concepto = prompt('¿Qué quieres cotizar?');
+//     let cantidad = prompt('Cantidad requerida');
+//     let x = new Servicios(i+1, concepto, cantidad)
+//     x.calculoValorServicio()
+//     datosCotizacion.servicio.push(x)
+// }
 
 
 datosCotizacion.numeroCotizacion = '001'

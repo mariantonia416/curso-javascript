@@ -45,9 +45,9 @@ let datosCotizacion = {
     numeroConsecutivo: String,
     fecha: String,
     elaborado: String,
-    cliente: clientes,
+    cliente: Clientes,
     servicio: [],
-    total: valorTotal,
+    total: ValorTotal,
     calculoSubTotal: function () {
         this.total.subtotal = 0;
         console.log('Ejecute la función calculoIva')
@@ -89,3 +89,5 @@ datosCotizacion.fecha = '04/16/1990'
 datosCotizacion.elaborado = 'Mariantonia Castaño'
 
 console.log('Ejecute la función calculoValorServicio')
+
+console.log('El cliente hizo la cotización de' + datosCotizacion.servicio.length + 'servicios')

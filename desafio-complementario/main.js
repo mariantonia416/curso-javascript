@@ -17,5 +17,3 @@ datos.map(x => {
 });
 
 contenedor.appendChild(lista);
-
-

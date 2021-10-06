@@ -1,102 +1,21 @@
+const datos = ['Codigo de producto','Nombre del Producto', 'Precio del Producto', 'Cantidad']
 
-class servicios {
-    constructor(item, concepto, cantidad) {
-        this.item = item,
-            this.concepto = concepto,
-            this.cantidad = cantidad,
-            this.valor = 0
-    }
-    calculoValorServicio() {
-        switch (this.concepto) {
-            case 'pantalla':
-                this.valor = 3000000 * this.cantidad
-                break;
-            case 'tarima':
-                this.valor = 1000000 * this.cantidad
-                break;
-            case 'techo':
-                this.valor = 1200000 * this.cantidad
-                break;
-            default:
-                alert('No podemos cotizar este servicio')
-                break;
-        }
-    }
-}
+let contenedor = document.getElementById('contenedor');
+var titulo = document.createElement('h1');
 
-class clientes {
-    constructor(nombre, empresa, telefono, email,numeroItems) {
-        this.nombre = nombre,
-        this.empresa = empresa,
-        this.telefono = telefono,
-        this.email = email
-    }
-}
+let lista = document.createElement('ul');
 
-class valorTotal {
-    constructor (subtotal,iva,total) {
-        this.subtotal = subtotal,
-        this.iva = iva,
-        this.total = total
-    }
-}
+titulo.innerText = 'Cotización';
+contenedor.appendChild(titulo);
 
-let datosCotizacion = {
-    numeroCotizacion: String,
-    numeroConsecutivo: String,
-    fecha: String,
-    elaborado: String,
-    cliente: clientes,
-    servicio: [],
-    total: valorTotal,
-    calculoSubTotal: function () {
-        this.total.subtotal = 0;
-        for (i = 0; i < this.servicio.length; i++) {
-            this.total.subtotal = this.total.subtotal + this.servicio[i].valor
-           }
-    },
+datos.map(x => {
+    let item = document.createElement('li');
+    let txt = document.createTextNode(x);
+    item.className = 'datos';
+    item.appendChild(txt);
+    lista.appendChild(item);
+});
 
-    calculoIva: function () {
-        this.total.iva = this.total.subtotal * 0.19;
-    },
-
-    calculoTotal: function () {
-        this.total.total = this.total.subtotal + this.total.iva;
-    },
-
-    calculoCotizacion: function() {
-        this.calculoSubTotal();
-        this.calculoIva();
-        this.calculoTotal();
-}
-};
-
-datosCotizacion.cliente.nombreCompleto = prompt('Escribe tu nombre completo');
-datosCotizacion.cliente.empresa = prompt('Empresa donde laboras');
-datosCotizacion.cliente.telefono = prompt('Escribe tu numero de teléfono');
-datosCotizacion.cliente.email = prompt('Escribe tu email');
-let = numeroItems = prompt ('¿Cuántos items quieres cotizar?')
-
-let i;
-for (i = 0; i < numeroItems; i++) {
-    let concepto = prompt('¿Qué quieres cotizar?');
-    let cantidad = prompt('Cantidad requerida');
-    let x = new servicios(i+1, concepto, cantidad)
-    x.calculoValorServicio()
-    datosCotizacion.servicio.push(x)
-}
-
-
-datosCotizacion.numeroCotizacion = '001'
-datosCotizacion.numeroConsecutivo = 'abc123'
-datosCotizacion.fecha = '04/16/1990'
-datosCotizacion.elaborado = 'Mariantonia Castaño'
-
-datosCotizacion.calculoCotizacion();
-
-console.log('Ejecute la función calculoValorServicio')
-
-
-
+contenedor.appendChild(lista);
 
 

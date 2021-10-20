@@ -24,8 +24,7 @@ let producto = [
         'nombreItem': 'Pabellón',
         'precioItem': 1000000        
     }
-];
-
+]
 class Servicios {
     constructor(item, concepto, cantidad) {
         this.item = item,
@@ -33,21 +32,21 @@ class Servicios {
         this.cantidad = cantidad,
         this.valor = 0
     }
-    calculoValorServicio() {
-        
-    }
-};
-
-let cotizacion = [];
-
+}
+let cotizacion = []
 function llenarTabla (contenido) {
-    let tabla = $('#tabla')
+    let tabla = $('#tabla tbody')
     let fila = '' 
     contenido.map(item => {
-        fila += `<tr><th scope="row">${item.item}</th><td>${item.concepto}</td><td>${item.cantidad}</td><td>${item.valor}</td></tr>`
+        fila = '<tr>' +
+        '<th scope="row">' + item.item + '</th>' +
+        '<td>' + item.concepto + '</td>' +
+        '<td>' + item.cantidad + '</td>' +
+        '<td>' + item.valor + '</td>' +
+        '</tr>';
     })
-    tabla.tBodies[0].innerHTML = fila;
-};
+    tabla.append(fila);
+}
 
 function llenarDesplegable (contenido) {
     let desplegable = $('#desplegable')
@@ -55,24 +54,24 @@ function llenarDesplegable (contenido) {
     contenido.map(item => {
         option += `<option value="${item.codigoItem}">${item.nombreItem}</option>`
     })
-    desplegable.innerHTML = option;
-};
+    desplegable.append(option);
+}
+llenarDesplegable(producto)
 
-
-llenarDesplegable(producto);
-
-let btn = $('#boton');
-
+let btn = $('#boton')
 $(document).ready(function(){
     btn.click((e) => {
-        e.preventDefault();
-        let dropdown = $('#desplegable');
-        let quantity = $('#cantidad');
-        let name = producto.filter(x => x.codigoItem == dropdown.value)[0].nombreItem;
-        let tablaProductos = new Servicios(dropdown.value, name, quantity.value);
-        let precio = producto.filter(x => x.codigoItem == dropdown.value)[0].precioItem;
-        tablaProductos.valor = precio * quantity.value;
-        cotizacion.push (tablaProductos);
-        llenarTabla(cotizacion);
-    });
-});
+        e.preventDefault()
+        let dropdown = $('#desplegable')
+        let quantity = $('#cantidad')
+        let name = producto.filter(x => x.codigoItem == dropdown.val())[0].nombreItem;
+        let tablaProductos = new Servicios(dropdown.val(), name, quantity.val());
+        let precio = producto.filter(x => x.codigoItem == dropdown.val())[0].precioItem;
+        tablaProductos.valor = precio * quantity.val()
+        cotizacion.push (tablaProductos)
+        llenarTabla(cotizacion)
+        $('#tabla').fadeOut('slow', function(){
+            $('#tabla').fadeIn('1000');
+        });
+    })
+})

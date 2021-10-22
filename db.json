@@ -1,11 +1,29 @@
 {
-    "posts": [
-      {
-        "id": 1,
-        "title": "hello"
-      }
-    ],
-    "profile": {
-      "name": "typicode"
+  "productos": [
+    {
+      "codigoItem": "001",
+      "nombreItem": "Tarima",
+      "precioItem": 1000000
+    },
+    {
+      "codigoItem": "002",
+      "nombreItem": "Techo",
+      "precioItem": 1200000
+    },
+    {
+      "codigoItem": "003",
+      "nombreItem": "Pantalla",
+      "precioItem": 3000000
+    },
+    {
+      "codigoItem": "004",
+      "nombreItem": "Camara",
+      "precioItem": 800000
+    },
+    {
+      "codigoItem": "005",
+      "nombreItem": "Pabellón",
+      "precioItem": 1000000
     }
-  }
+  ]
+}

@@ -1,26 +1,31 @@
 {
   "productos": [
     {
+      "id": 1,
       "codigoItem": "001",
       "nombreItem": "Tarima",
       "precioItem": 1000000
     },
     {
+      "id": 2,
       "codigoItem": "002",
       "nombreItem": "Techo",
       "precioItem": 1200000
     },
     {
+      "id": 3,
       "codigoItem": "003",
       "nombreItem": "Pantalla",
       "precioItem": 3000000
     },
     {
+      "id": 4,
       "codigoItem": "004",
       "nombreItem": "Camara",
       "precioItem": 800000
     },
     {
+      "id": 5,
       "codigoItem": "005",
       "nombreItem": "Pabellón",
       "precioItem": 1000000

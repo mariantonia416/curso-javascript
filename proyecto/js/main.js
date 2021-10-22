@@ -1,30 +1,10 @@
-let producto = [
-    
-    {
-        'codigoItem': '001',
-        'nombreItem': 'Tarima',
-        'precioItem': 1000000
-    },
-    {
-        'codigoItem': '002',
-        'nombreItem': 'Techo',
-        'precioItem': 1200000
-    },{
-        'codigoItem': '003',
-        'nombreItem': 'Pantalla',
-        'precioItem': 3000000        
-    },
-    {
-        'codigoItem': '004',
-        'nombreItem': 'Camara',
-        'precioItem': 800000        
-    },
-    {
-        'codigoItem': '005',
-        'nombreItem': 'Pabellón',
-        'precioItem': 1000000        
-    }
-]
+let producto = []
+
+$.get('http://my-json-server.typicode.com/mariantonia416/curso-javascript/productos', function (response) {
+    producto = response
+    llenarDesplegable(producto)
+}) 
+
 class Servicios {
     constructor(item, concepto, cantidad) {
         this.item = item,
@@ -33,6 +13,7 @@ class Servicios {
         this.valor = 0
     }
 }
+
 let cotizacion = []
 function llenarTabla (contenido) {
     let tabla = $('#tabla tbody')
@@ -56,12 +37,11 @@ function llenarDesplegable (contenido) {
     })
     desplegable.append(option);
 }
-llenarDesplegable(producto)
 
 let btn = $('#boton')
 $(document).ready(function(){
     btn.click((e) => {
-        e.preventDefault()
+        e.preventDefault()     
         let dropdown = $('#desplegable')
         let quantity = $('#cantidad')
         let name = producto.filter(x => x.codigoItem == dropdown.val())[0].nombreItem;
@@ -75,3 +55,5 @@ $(document).ready(function(){
         });
     })
 })
+
+

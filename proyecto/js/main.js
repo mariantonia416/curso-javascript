@@ -1,5 +1,13 @@
 let producto = []
 
+// fetch('http://my-json-server.typicode.com/mariantonia416/curso-javascript/productos')
+// .then(response => response.json())
+// .then(json => {
+//     producto = Array.from(json)
+//     llenarDesplegable(producto)
+//     }
+// )
+
 $.get('http://my-json-server.typicode.com/mariantonia416/curso-javascript/productos', function (response) {
     producto = response
     llenarDesplegable(producto)
@@ -13,7 +21,6 @@ class Servicios {
         this.valor = 0
     }
 }
-
 let cotizacion = []
 function llenarTabla (contenido) {
     let tabla = $('#tabla tbody')
@@ -23,8 +30,8 @@ function llenarTabla (contenido) {
         '<th scope="row">' + item.item + '</th>' +
         '<td>' + item.concepto + '</td>' +
         '<td>' + item.cantidad + '</td>' +
-        '<td>' + item.valor + '</td>' +
-        '</tr>';
+        '<td class="valorProducto">' + item.valor + '</td>' +
+        '</tr>'
     })
     tabla.append(fila);
 }
@@ -44,16 +51,28 @@ $(document).ready(function(){
         e.preventDefault()     
         let dropdown = $('#desplegable')
         let quantity = $('#cantidad')
+        let valorProducto = $('.valorProducto')
+        let calculoTotal = $('.total')
+        let tabla = $('#tabla')
+        let formulario = $("#formulario")
         let name = producto.filter(x => x.codigoItem == dropdown.val())[0].nombreItem;
         let tablaProductos = new Servicios(dropdown.val(), name, quantity.val());
         let precio = producto.filter(x => x.codigoItem == dropdown.val())[0].precioItem;
         tablaProductos.valor = precio * quantity.val()
         cotizacion.push (tablaProductos)
         llenarTabla(cotizacion)
-        $('#tabla').fadeOut('slow', function(){
-            $('#tabla').fadeIn('1000');
-        });
-    })
-})
+        
+        let suma = 0;
+        valorProducto.each(function() {
+            suma = suma + parseInt($(this).html())
+        })
+        calculoTotal.html(suma)
 
+        tabla.fadeOut('slow', function(){
+            tabla.fadeIn('1000');
+        });
+        formulario[0].reset();
+    })
+    
+})
 

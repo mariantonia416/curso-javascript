@@ -23,6 +23,7 @@ class Servicios {
 }
 let cotizacion = []
 function llenarTabla (contenido) {
+    let val;
     let tabla = $('#tabla tbody')
     let fila = '' 
     contenido.map(item => {
@@ -32,8 +33,11 @@ function llenarTabla (contenido) {
         '<td>' + item.cantidad + '</td>' +
         '<td class="valorProducto">' + item.valor + '</td>' +
         '</tr>'
+        val = item.valor;
     })
     tabla.append(fila);
+    
+    return val;
 }
 
 function llenarDesplegable (contenido) {
@@ -47,11 +51,11 @@ function llenarDesplegable (contenido) {
 
 let btn = $('#boton')
 $(document).ready(function(){
+    let tot = 0;
     btn.click((e) => {
         e.preventDefault()     
         let dropdown = $('#desplegable')
         let quantity = $('#cantidad')
-        let valorProducto = $('.valorProducto')
         let calculoTotal = $('.total')
         let tabla = $('#tabla')
         let formulario = $("#formulario")
@@ -60,14 +64,11 @@ $(document).ready(function(){
         let precio = producto.filter(x => x.codigoItem == dropdown.val())[0].precioItem;
         tablaProductos.valor = precio * quantity.val()
         cotizacion.push (tablaProductos)
-        llenarTabla(cotizacion)
+        let valorProducto = llenarTabla(cotizacion)
+        tot = tot+valorProducto;
         
-        let suma = 0;
-        valorProducto.each(function() {
-            suma = suma + parseInt($(this).html())
-        })
-        calculoTotal.html(suma)
-
+        calculoTotal.html(tot)
+        
         tabla.fadeOut('slow', function(){
             tabla.fadeIn('1000');
         });
